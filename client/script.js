@@ -40,7 +40,9 @@ socket.on('message', function(data) {
 });
 
 function unblockUI() {
-    $.unblockUI({fadeOut: 50});
+    $.unblockUI({
+        fadeOut: 50
+    });
 }
 
 function blockUI(message) {
@@ -202,7 +204,7 @@ function drawNewCard(id, text, x, y, rot, colour, sticker, animationspeed) {
                 return false;
             }
         },
-		handle: "div.content"
+        handle: "div.content"
     });
 
     //After a drag:
@@ -611,13 +613,13 @@ function boardResizeHappened(event, ui) {
 }
 
 function resizeBoard(size) {
-    $(".board-outline").animate({
-        height: size.height,
-        width: size.width
-    });
-}
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
+        $(".board-outline").animate({
+            height: size.height,
+            width: size.width
+        });
+    }
+    //////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////
 
 function calcCardOffset() {
     var offsets = {};
@@ -681,8 +683,8 @@ function adjustCard(offsets, doSync) {
 $(function() {
 
 
-	//disable image dragging
-	//window.ondragstart = function() { return false; };
+    //disable image dragging
+    //window.ondragstart = function() { return false; };
 
 
     if (boardInitialized === false)
@@ -705,6 +707,54 @@ $(function() {
         });
 
 
+    $("#create-card-blue")
+        .click(function() {
+            var rotation = Math.random() * 10 - 5; //add a bit of random rotation (+/- 10deg)
+            uniqueID = Math.round(Math.random() * 99999999); //is this big enough to assure uniqueness?
+            //alert(uniqueID);
+            createCard(
+                'card' + uniqueID,
+                '',
+                58, $('div.board-outline').height(), // hack - not a great way to get the new card coordinates, but most consistant ATM
+                rotation,
+                'blue');
+        });
+    $("#create-card-green")
+        .click(function() {
+            var rotation = Math.random() * 10 - 5; //add a bit of random rotation (+/- 10deg)
+            uniqueID = Math.round(Math.random() * 99999999); //is this big enough to assure uniqueness?
+            //alert(uniqueID);
+            createCard(
+                'card' + uniqueID,
+                '',
+                58, $('div.board-outline').height(), // hack - not a great way to get the new card coordinates, but most consistant ATM
+                rotation,
+                'green');
+        });
+    $("#create-card-yellow")
+        .click(function() {
+            var rotation = Math.random() * 10 - 5; //add a bit of random rotation (+/- 10deg)
+            uniqueID = Math.round(Math.random() * 99999999); //is this big enough to assure uniqueness?
+            //alert(uniqueID);
+            createCard(
+                'card' + uniqueID,
+                '',
+                58, $('div.board-outline').height(), // hack - not a great way to get the new card coordinates, but most consistant ATM
+                rotation,
+                'yellow');
+        });
+    $("#create-card-white")
+        .click(function() {
+            var rotation = Math.random() * 10 - 5; //add a bit of random rotation (+/- 10deg)
+            uniqueID = Math.round(Math.random() * 99999999); //is this big enough to assure uniqueness?
+            //alert(uniqueID);
+            createCard(
+                'card' + uniqueID,
+                '',
+                58, $('div.board-outline').height(), // hack - not a great way to get the new card coordinates, but most consistant ATM
+                rotation,
+                'white');
+        });
 
     // Style changer
     $("#smallify").click(function() {
